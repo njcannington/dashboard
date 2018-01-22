@@ -1,0 +1,24 @@
+; OpenWeather
+[ow]
+    appid = [APP_ID]
+
+; DB
+[database]
+    host = [HOST]
+    username = [USERNAME]
+    password = [PASSWORD]
+    db = [DASHBOARD]
+
+; Location
+[location]
+    ;work
+    work[city] = [CITY]
+    work[zip] = [ZIP]
+    work[lat] = [LAT]
+    work[lon] = [LON]
+
+    ;home
+    home[city] = [CITY]
+    home[zip] = [ZIP]
+    home[lat] = [LAT]
+    home[lon] = [LON]
