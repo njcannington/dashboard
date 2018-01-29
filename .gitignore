@@ -1,0 +1,6 @@
+.*
+!/.gitignore
+cron/cron.php
+config/config.ini
+vendor/*
+composer.lock
