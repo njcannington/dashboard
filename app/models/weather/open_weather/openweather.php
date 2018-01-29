@@ -4,13 +4,15 @@ namespace App\Models\Weather\Open_Weather;
 use Lib\Config\Config;
 use Lib\Utils\Curl;
 
-abstract class Ow
+class OpenWeather
 {
     protected $data;
     const API_ROOT = "http://api.openweathermap.org/data/2.5/";
 
-    protected function __construct($url)
+    public function __construct($coords)
     {
+        $param = "lat={$coords[0]}&lon={$coords[1]}";
+        $url = self::buildUrl("weather", $param);
         $json_results = Curl::getInstance($url);
         $this->data = json_decode($json_results);
     }
@@ -24,17 +26,10 @@ abstract class Ow
     {
         return round($this->data->main->temp);
     }
-    
-    public function getCoord()
-    {
-        $coord = $this->data->coord;
 
-        return $coord->lat.",".$coord->lon;
-    }
-
-    public function getId()
+    public function getIcon()
     {
-        return $this->data->id;
+        return round($this->data->weather[0]->icon);
     }
 
     protected static function buildUrl($endpoint, $param)
